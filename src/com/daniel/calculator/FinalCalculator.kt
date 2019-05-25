@@ -98,8 +98,10 @@ fun main (args: Array<String>) {
         do {
             answer = finalCalculator.selectOptions()
         } while (answer !in 1..5)
+
         val calculateNumber = finalCalculator.calculate(num1 = result, num2 = writtenNumber, answer = answer)
         result = calculateNumber
+
         if (answer != 5) {
             println("su resultado es igual a $result")
         } else if (result == 13.0){
