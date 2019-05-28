@@ -29,25 +29,17 @@ class FinalCalculator {
         return answer
     }
 
-    fun increment(number1: Double, number2: Double): Double {
-        return number1 + number2
-    }
+    private fun increment(number1: Double, number2: Double) = number1 + number2
 
-    fun subtract(number1: Double, number2: Double): Double {
-        return number1 - number2
-    }
+    private fun subtract(number1: Double, number2: Double) = number1 - number2
 
-    fun multip(number1: Double, number2: Double): Double {
-        return number1 * number2
-    }
+    private fun multip(number1: Double, number2: Double) = number1 * number2
 
-    fun divi(number1: Double, number2: Double): Double {
-        if (number2 != 0.0) {
-            return number1 / number2
-        }else{
-            println("no se puede dividir por 0")
-            return number1
-        }
+    private fun divi(number1: Double, number2: Double) = if (number2 != 0.0) {
+        number1 / number2
+    }else{
+        println("no se puede dividir por 0")
+        number1
     }
 
     fun calculate(answer: Int, num1: Double, num2: Double): Double {
@@ -88,24 +80,18 @@ fun main (args: Array<String>) {
     }
     do {
         println("Escribe otro numero")
-        val writtenNumber = try {
+        val nextNumber = try {
             readLine()?.toDouble() ?: 0.0
         } catch (e: Exception) {
             println("Esto no es un numero valido")
             0.0
         }
-        var answer: Int
+        var option: Int
         do {
-            answer = finalCalculator.selectOptions()
-        } while (answer !in 1..5)
+            option = finalCalculator.selectOptions()
+        } while (option !in 1..5)
 
-        val calculateNumber = finalCalculator.calculate(num1 = result, num2 = writtenNumber, answer = answer)
-        result = calculateNumber
-
-        if (answer != 5) {
-            println("su resultado es igual a $result")
-        } else if (result == 13.0){
-            println("Aqui tiene pa que me las vece")
-        }
-    } while(answer != 5)
+        result = finalCalculator.calculate(num1 = result, num2 = nextNumber, answer = option)
+        println("su resultado es igual a $result")
+    } while(option != 5)
 }
